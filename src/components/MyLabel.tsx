@@ -18,11 +18,23 @@ export interface MyLabelProps {
      * Colores básicos del botón
      */
     color?: 'primary' | 'secondary' | 'tertiary';
+    /**
+     * Color personalizado de la fuente
+     */
+    fontColor?: string;
 }
 
-export const MyLabel = ({label = 'No Label', size = 'normal', allCaps = false, color = 'primary'}: MyLabelProps) => {
+export const MyLabel = (
+    {
+        label = 'No Label',
+        size = 'normal',
+        allCaps = false,
+        color = 'primary',
+        fontColor
+    }: MyLabelProps) => {
     return (
-        <span className={`${size} text-${color}`}>
+        <span className={`label ${size} text-${color}`}
+              style={{color: fontColor}}>
             {
                 (allCaps) ? label.toUpperCase() : label
             }
