@@ -10,6 +10,10 @@
     "url": "https://github.com/ArianAngoma/storybook-components",
     "type": "git"
   },
+  "peerDependencies": {
+    "react": ">=16",
+    "typescript": ">=4.0.0"
+  },
   "release": {
     "branches": [
       "main"
@@ -34,10 +38,12 @@
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build": "TODO: Implementar",
+    "build": "npm run clean && tsc && npm run copy-files",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=b61c3f36fbc8"
+    "chromatic": "npx chromatic --project-token=b61c3f36fbc8",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +70,8 @@
     "@storybook/addon-links": "^6.4.9",
     "@storybook/react": "^6.4.9",
     "babel-loader": "^8.2.3",
-    "chromatic": "^6.2.0"
+    "chromatic": "^6.2.0",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2"
   }
 }
